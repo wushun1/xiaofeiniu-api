@@ -11,6 +11,7 @@ module.exports = router;
 *获取所有的全局设置信息
 *返回数据：
 *   {appName:'xx', adminUrl:'xx', appUrl:'xx',...}
+*   {appName:'xx', adminUrl:'xx', appUrl:'xx',...}
 */
 router.get('/', (req, res)=>{
   pool.query('SELECT * FROM xfn_settings LIMIT 1', (err, result)=>{

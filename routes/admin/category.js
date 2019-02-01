@@ -8,7 +8,7 @@ var router = express.Router();
 module.exports = router;
 
 /*
-*API:  GET /admin/category     
+*GET /admin/category     
 *含义：客户端获取所有的菜品类别，按编号升序排列
 *返回值形如：
 *  [{cid: 1, cname: '..'}, {...}]
@@ -16,8 +16,7 @@ module.exports = router;
 router.get('/', (req, res) => {
   pool.query('SELECT * FROM xfn_category ORDER BY cid', (err, result) => {
     if (err) throw err;
-    var jsonData = JSON.stringify(result);
-    res.send('doData(' + jsonData + ')');
+    res.send(result);
   })
 })
 
@@ -59,7 +58,11 @@ router.post('/', (req, res)=>{
   var data = req.body;   //形如{cname: 'xxx', }
   pool.query('INSERT INTO xfn_category SET ?', data, (err, result)=>{  //注意此处SQL语句的简写
     if(err)throw err;
-    res.send({code: 200, msg: '1 category added'});
+    res.send({
+		code: 200, 
+		msg: '1 category added',
+		cid: result.insertId
+	});
   })
 })
 

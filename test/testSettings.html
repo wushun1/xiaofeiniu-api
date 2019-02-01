@@ -18,6 +18,7 @@
         console.log(err); 
       })
     }
+
     bt2.onclick = function(){
       var data = {"sid":1,"appName":"小肥牛II","apiUrl":"http://127.0.0.1:8090","adminUrl":"http://127.0.0.1:8091","appUrl":"http://127.0.0.1:8092","icp":"京ICP备12003709号-3","copyright":"Copyright © 北京达内金桥科技有限公司版权所有"};
       axios.put('http://127.0.0.1:8090/admin/settings', data).then((result)=>{
@@ -26,6 +27,7 @@
         console.log(err);
       })
     }
+
   </script>
 </body>
 </html>
